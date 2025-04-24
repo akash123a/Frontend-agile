@@ -1,0 +1,17 @@
+@keyframes hopup {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .li-hopup {
+    animation-delay: 0.5s;
+    animation-name: hopup;
+    animation-duration: 0.75s;
+    animation-iteration-count: 1;
+  }

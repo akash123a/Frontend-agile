@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FiUser, FiLock, FiArrowRight } from "react-icons/fi";
 
 const EmployeeLogin = () => {
   const [email, setEmail] = useState("");
@@ -8,87 +9,231 @@ const EmployeeLogin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Employee Login:", { email, password });
-    // You can add API integration here for actual login
+
+    // Basic client-side check (not secure for real applications)
+    if (email && password) {
+      navigate("/dashboard"); // Redirect to Check.jsx
+    } else {
+      alert("Please enter both email and password.");
+    }
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-50 to-purple-50 p-6">
-      {/* Card Container */}
-      <div className="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md">
-        {/* Header */}
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 to-pink-50 p-4">
+      <div className="relative bg-white rounded-2xl p-8 w-full max-w-md shadow-xl hover:shadow-2xl transition-shadow duration-300">
+        
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">
-            Employee Login
-          </h2>
-          <p className="text-gray-600">
-            Log in to access your account and manage tasks.
-          </p>
+          <div className="mb-4 flex justify-center">
+            <div className="p-3 bg-indigo-100 rounded-2xl">
+              <FiUser className="text-3xl text-indigo-600" />
+            </div>
+          </div>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            Welcome Back! 👋
+          </h1>
+          <p className="text-gray-500">Sign in to access your workspace.</p>
         </div>
 
-        {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Email Field */}
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700 mb-2"
-            >
-              Email Address
-            </label>
-            <input
-              type="email"
-              id="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-            />
-          </div>
+          <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required className="w-full border p-3 rounded" />
+          <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required className="w-full border p-3 rounded" />
 
-          {/* Password Field */}
-          <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-gray-700 mb-2"
-            >
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-            />
-          </div>
-
-          {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105"
-          >
-            Login
+          <button type="submit" className="w-full bg-indigo-500 text-white py-3 rounded">
+            Sign In
+            <FiArrowRight className="ml-2" />
           </button>
         </form>
-
-        {/* Footer */}
-        
-        <div className="mt-6 text-center text-sm text-gray-600">
-          Don't have an account?{" "}
-          <a
-            href="/signup"
-            className="text-blue-600 hover:underline"
-          >
-            Sign up here
-          </a>
-        </div>
       </div>
     </div>
   );
 };
 
 export default EmployeeLogin;
+
+
+
+
+
+
+
+
+
+
+
+//--------------------------------------------------------------------------------------------------
+
+//   ye code voo jo sabse  pehle likha gaya hai, ye code employee login ka hai, ye code
+
+// import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import { FiUser, FiLock, FiArrowRight } from "react-icons/fi";
+
+// const EmployeeLogin = () => {
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const [loading, setLoading] = useState(false);
+//   const [error, setError] = useState("");
+//   const navigate = useNavigate();
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     setLoading(true);
+//     setError("");
+
+//     try {
+//       const response = await fetch("http://localhost:8094/auth/login", {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({ email, password }),
+//       });
+
+
+//       if (response.ok) {
+//         alert("Login successful!");
+//         localStorage.setItem("token", response);
+//         navigate("/dashboard");
+//       } else {
+//         setError(data.message || "Login failed. Please try again.");
+//       }
+//     } catch (error) {
+//       setError("Something went wrong. Please check your connection.");
+//     }
+
+//     setLoading(false);
+//   };
+
+//   return (
+//     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 to-pink-50 p-4">
+//       <div className="relative bg-white rounded-2xl p-8 w-full max-w-md shadow-xl hover:shadow-2xl transition-shadow duration-300">
+        
+//         <div className="text-center mb-8">
+//           <div className="mb-4 flex justify-center">
+//             <div className="p-3 bg-indigo-100 rounded-2xl">
+//               <FiUser className="text-3xl text-indigo-600" />
+//             </div>
+//           </div>
+//           <h1 className="text-3xl font-bold text-gray-900 mb-2">
+//             Welcome Back! 👋
+//           </h1>
+//           <p className="text-gray-500">Sign in to access your workspace.</p>
+//         </div>
+
+//         {error && <p className="text-red-500 text-sm text-center mb-4">{error}</p>}
+
+//         <form onSubmit={handleSubmit} className="space-y-6">
+//           <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required className="w-full border p-3 rounded" />
+//           <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required className="w-full border p-3 rounded" />
+
+//           <button type="submit" className="w-full bg-indigo-500 text-white py-3 rounded">
+//             {loading ? "Signing In..." : "Sign In"}
+//             <FiArrowRight className="ml-2" />
+//           </button>
+//         </form>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default EmployeeLogin;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//====================================================================================================
+      
+
+
+
+
+    
+//This is Check backend will verify then he hits the login button and then it will redirect to the dashboard page
+    
+
+// import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import { FiUser, FiLock, FiArrowRight } from "react-icons/fi";
+
+// const EmployeeLogin = () => {
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const [loading, setLoading] = useState(false);
+//   const [error, setError] = useState("");
+//   const navigate = useNavigate();
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     setLoading(true);
+//     setError("");
+
+//     try {
+//       const response = await fetch("http://localhost:8094/auth/login", {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({ email, password }),
+//       });
+
+//       const data = await response.json(); // Parse the response body as JSON
+
+//       if (response.ok) {
+//         alert("Login successful!");
+//         localStorage.setItem("token", data.token); // Store the token from the response
+//         navigate("/dashboard");
+//       } else {
+//         setError(data.message || "Login failed. Please try again.");
+//       }
+//     } catch (error) {
+//       setError("Something went wrong. Please check your connection.");
+//     }
+
+//     setLoading(false);
+//   };
+
+//   return (
+//     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 to-pink-50 p-4">
+//       <div className="relative bg-white rounded-2xl p-8 w-full max-w-md shadow-xl hover:shadow-2xl transition-shadow duration-300">
+        
+//         <div className="text-center mb-8">
+//           <div className="mb-4 flex justify-center">
+//             <div className="p-3 bg-indigo-100 rounded-2xl">
+//               <FiUser className="text-3xl text-indigo-600" />
+//             </div>
+//           </div>
+//           <h1 className="text-3xl font-bold text-gray-900 mb-2">
+//             Welcome Back! 👋
+//           </h1>
+//           <p className="text-gray-500">Sign in to access your workspace.</p>
+//         </div>
+
+//         {error && <p className="text-red-500 text-sm text-center mb-4">{error}</p>}
+
+//         <form onSubmit={handleSubmit} className="space-y-6">
+//           <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required className="w-full border p-3 rounded" />
+//           <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required className="w-full border p-3 rounded" />
+
+//           <button type="submit" className="w-full bg-indigo-500 text-white py-3 rounded">
+//             {loading ? "Signing In..." : "Sign In"}
+//             <FiArrowRight className="ml-2" />
+//           </button>
+//         </form>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default EmployeeLogin;
