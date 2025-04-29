@@ -6,6 +6,9 @@ import React, { useState, useCallback } from 'react';
 import { Hand as DragHandle, Plus, Settings2, Search, ChevronDown, X, FolderPlus } from 'lucide-react';
 import ProjectModal from './ProjectModal';
 import TaskForm from './TaskForm';
+
+import { LogOut } from 'lucide-react';
+
 import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Grid, Button, IconButton, MenuItem } from '@mui/material';
 import { Mail, Send, Close } from '@mui/icons-material';
 
@@ -39,6 +42,12 @@ const Check = () => {
       ]
     }
   ]);
+
+  const handleLogout = () => {
+    // Add any logout logic here (clear tokens, storage, etc.)
+    // For now, just redirect to login page
+    window.location.href = "/Employee-Login";
+  };
 
   const [projects, setProjects] = useState([
     {
@@ -156,7 +165,7 @@ const Check = () => {
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar */}
-      <div className="w-64 bg-white border-r">
+      <div className="w-64 bg-white border-r relative">
         <div className="p-4">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center space-x-2">
@@ -208,6 +217,9 @@ const Check = () => {
             </div>
           </nav>
         </div>
+
+              
+
       </div>
 
       {/* Main Content */}
@@ -334,7 +346,8 @@ const Check = () => {
               <h2 className="text-xl font-semibold">Create Task</h2>
               <button 
   onClick={() => setIsModalOpen(false)} 
-  className="bg-indigo-500 text-white p-1.5 rounded-full hover:bg-indigo-600 transition-colors"
+  className="bg-rose-500 text-white p-1.5 rounded-full hover:bg-rose-600 transition-colors
+"
 >
   <X className="w-5 h-5" />
 </button>
