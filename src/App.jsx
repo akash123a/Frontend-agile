@@ -210,8 +210,7 @@ import PageFive from "./component/PageFive";
 import PageSix from "./component/PageSix";
 import Check from "./component/Check";
 import ProjectModal from "./component/ProjectModal";
-
-
+import EmployeeDashboard from "./component/EmployeeDashboard";
 
 
 
@@ -252,6 +251,8 @@ const App = () => {
         {/* OTP Verification */}
           
         <Route path="/dashboard" element={<Check />} />
+        <Route path="/employee-dashboard" element={<EmployeeDashboard />} />
+      
         <Route path="/homepage" element={<HomePage />} />
       </Routes>
     </Router>
